@@ -21,15 +21,24 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
           Text('Texto',
-              style: TextStyle(
-                  fontFamily: 'serif', fontSize: 45, color: Colors.teal, fontWeight: FontWeight.w800, backgroundColor: Colors.deepPurple)),
-          Text('Texto2')
-        ],
-      ),
+          style: TextStyle(
+              fontFamily: 'serif',
+              fontSize: 55,
+              color: Colors.white,
+              fontWeight: FontWeight.w800,)),
+      Text('0',
+          style: TextStyle(
+              fontFamily: 'serif',
+              fontSize: 90,
+              color: Colors.white,
+              fontWeight: FontWeight.w800,))],
+    )
+    ,
     );
   }
 }
