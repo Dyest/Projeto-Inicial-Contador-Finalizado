@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
           Text('Texto',
           style: TextStyle(
               fontFamily: 'serif',
-              fontSize: 55,
+              fontSize: 70,
               color: Colors.white,
               fontWeight: FontWeight.w800,)),
       Text('0',
