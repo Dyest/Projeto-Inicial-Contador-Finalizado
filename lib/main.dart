@@ -9,23 +9,42 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int count = 0;
+
   void decrement() {
-    print('decrement');
+    setState(() {
+      count--;
+    });
+
+    print(count);
   }
 
   void increment() {
-    print('increment');
+    setState(() {
+
+      count++;
+    });
+    print(count);
   }
+
+  bool get isEmpty => count == 0;
+  bool get isFull => count == 5;
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,21 +58,22 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Texto',
+            Text(
+                isFull ? 'Lotado' : 'Pode Entrar',
                 style: TextStyle(
                   fontFamily: 'serif',
-                  fontSize: 70,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w800,
+                  fontSize: 60,
+                  color: isFull ? Colors.red : Colors.black,
+                  fontWeight: FontWeight.w500,
                 )),
 
             const SizedBox(height: 30), //espaçamento entre botoes
 
-            Text('0',
+            Text('$count',
                 style: TextStyle(
                   fontFamily: 'serif',
-                  fontSize: 90,
-                  color: Colors.black,
+                  fontSize: 80,
+                  color: isFull ? Colors.red : Colors.black,
                   fontWeight: FontWeight.w800,
                 )),
 
@@ -63,9 +83,9 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: decrement,
+                  onPressed: isEmpty ? null : decrement,
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: isEmpty ? Colors.white.withOpacity(0.2) : Colors.purple,
                       //padding: const EdgeInsets.fromLTRB(25, 12, 25, 12),
                       fixedSize: const Size(100, 45),
                       shape: RoundedRectangleBorder(
@@ -81,9 +101,9 @@ class HomePage extends StatelessWidget {
                 const SizedBox(width: 8), //espaçamento entre botoes
 
                 TextButton(
-                  onPressed: increment,
+                  onPressed: isFull ? null : increment,
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: isFull ? Colors.white.withOpacity(0.2) : Colors.purple,
                       //padding: const EdgeInsets.fromLTRB(25, 12, 25, 12),
                       fixedSize: const Size(100, 45),
                       shape: RoundedRectangleBorder(
@@ -103,3 +123,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
