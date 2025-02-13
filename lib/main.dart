@@ -30,8 +30,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       count--;
     });
-
-    print(count);
   }
 
   void increment() {
@@ -39,7 +37,6 @@ class _HomePageState extends State<HomePage> {
 
       count++;
     });
-    print(count);
   }
 
   bool get isEmpty => count == 0;
@@ -85,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                 TextButton(
                   onPressed: isEmpty ? null : decrement,
                   style: TextButton.styleFrom(
-                      backgroundColor: isEmpty ? Colors.white.withOpacity(0.2) : Colors.purple,
+                      backgroundColor: isEmpty ? Colors.white.withAlpha(50) : Colors.purple,
                       //padding: const EdgeInsets.fromLTRB(25, 12, 25, 12),
                       fixedSize: const Size(100, 45),
                       shape: RoundedRectangleBorder(
@@ -103,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                 TextButton(
                   onPressed: isFull ? null : increment,
                   style: TextButton.styleFrom(
-                      backgroundColor: isFull ? Colors.white.withOpacity(0.2) : Colors.purple,
+                      backgroundColor: isFull ? Colors.white.withAlpha(50) : Colors.purple,
                       //padding: const EdgeInsets.fromLTRB(25, 12, 25, 12),
                       fixedSize: const Size(100, 45),
                       shape: RoundedRectangleBorder(
